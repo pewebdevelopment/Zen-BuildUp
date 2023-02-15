@@ -13,3 +13,12 @@ enum TaskStatus {
   OVERDUE
   ARCHIVED
 }
+
+type Task @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String
+  thumbnailURL: String
+  dueAt: AWSDateTime
+  status: [TaskStatus]
+}
