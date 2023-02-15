@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-zenbuildup-dev-140254-authRole",
+      "UnauthRoleArn": "arn:aws:iam::596109967064:role/amplify-zenbuildup-dev-140254-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::596109967064:role/amplify-zenbuildup-dev-140254-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-zenbuildup-dev-140254-deployment",
+      "UnauthRoleName": "amplify-zenbuildup-dev-140254-unauthRole",
+      "StackName": "amplify-zenbuildup-dev-140254",
+      "StackId": "arn:aws:cloudformation:ap-south-1:596109967064:stack/amplify-zenbuildup-dev-140254/311a5850-a2d4-11ed-8e98-06bab9ad0e42",
+      "AmplifyAppId": "d257290h04qhf9"
+    }
+  }
+}
