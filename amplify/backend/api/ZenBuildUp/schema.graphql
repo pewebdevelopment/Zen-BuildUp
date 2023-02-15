@@ -1,6 +1,28 @@
-type Students @model @auth(rules: [{allow: public}]) {
+type Student @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String
   email: AWSEmail
   createdAt: AWSDateTime
+  StudentTasks: [Task] @hasMany(indexName: "byStudent", fields: ["id"])
+}
+
+enum TaskStatus {
+  PLANNED
+  ASSIGNED
+  INPROGRESS
+  COMPLETED
+  OVERDUE
+  ARCHIVED
+}
+
+type Task @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String
+  thumbnailURL: String
+  createdAt: AWSDateTime
+  updatedAt: [AWSDateTime]
+  dueAt: AWSDateTime
+  status: [TaskStatus]
+  studentID: ID! @index(name: "byStudent")
 }
