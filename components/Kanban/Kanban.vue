@@ -2,7 +2,7 @@
   <!-- Page Wrapper -->
   <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900">
     <!-- Main Content Wrapper -->
-    <main class="main-content kanban-app w-full">
+    <div class="main-content kanban-app w-full">
       <div
         class="flex items-center justify-between space-x-2 px-[var(--margin-x)] py-5 transition-all duration-[.25s]"
       >
@@ -193,7 +193,7 @@
       <div class="flex h-[calc(100vh-8.5rem)] flex-grow flex-col">
         <div
           id="tasks-group"
-          class="kanban-scrollbar flex w-full items-start space-x-4 overflow-x-auto overflow-y-hidden px-[var(--margin-x)] transition-all duration-[.25s]"
+          class="relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar flex w-full items-start space-x-4 overflow-x-auto overflow-y-hidden px-[var(--margin-x)] transition-all duration-[.25s]"
         >
           <div
             class="board-draggable relative flex max-h-full w-72 shrink-0 flex-col"
@@ -275,7 +275,7 @@
             </div>
             <div
               id="tasks-progress-list"
-              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5"
+              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
             >
               <Sortable :list="list" :itemKey="list.id">
                 <template #item="{ element }">
@@ -829,6 +829,7 @@
                 </template>
               </Sortable>
             </div>
+            <!-- New Task Div -->
             <div class="flex justify-center py-2">
               <button
                 class="flex items-center justify-center space-x-2 font-medium text-slate-600 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
@@ -945,293 +946,44 @@
             </div>
             <div
               id="tasks-pending-list"
-              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5"
+              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
             >
-              <div class="card cursor-pointer shadow-sm">
-                <div class="px-2.5 pb-2 pt-1.5">
-                  <div>
-                    <div class="flex justify-between">
-                      <p
-                        class="font-medium tracking-wide text-slate-600 line-clamp-2 dark:text-navy-100"
-                      >
-                        Create Students Module
-                      </p>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="-mr-1.5 h-3.5 w-3.5 shrink-0 text-secondary dark:text-secondary-light"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-
-                    <p class="mt-px text-xs text-slate-400 dark:text-navy-300">
-                      Online LMS
-                    </p>
-                  </div>
-
-                  <div class="mt-2 flex flex-wrap space-x-1">
-                    <div
-                      class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-3.5 w-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span> Jun 05</span>
-                    </div>
-                  </div>
-
-                  <div class="mt-3 flex items-end justify-between">
-                    <div class="flex items-center space-x-2">
-                      <div class="avatar h-6 w-6">
-                        <img
-                          class="rounded-full"
-                          src="@/assets/lineone-images/200x200.png"
-                          alt="avatar"
-                        />
-                      </div>
-                      <p>Katrina W.</p>
-                    </div>
-                    <div
-                      class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
-                    >
-                      <div class="flex items-center space-x-0.5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                          />
-                        </svg>
-                        <span>2</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card cursor-pointer shadow-sm">
-                <div class="rounded-lg bg-warning/10 px-2.5 pb-2 pt-1.5">
-                  <div>
-                    <div class="flex justify-between">
-                      <p
-                        class="font-medium tracking-wide text-warning line-clamp-2"
-                      >
-                        Pay App Wages [1200$]
-                      </p>
-                    </div>
-                  </div>
-                  <div class="mt-2 flex flex-wrap space-x-1">
-                    <div
-                      class="badge space-x-1 bg-warning/10 py-1 px-1.5 text-warning dark:bg-warning/15"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-3.5 w-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                      <span> Sep 12</span>
-                    </div>
-                    <div
-                      class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary/15 dark:text-secondary-light"
-                    >
-                      Performance
-                    </div>
-                  </div>
-                  <div class="mt-3 flex items-end justify-between">
-                    <div class="flex flex-wrap -space-x-1.5">
-                      <div class="avatar h-5 w-5 hover:z-10">
-                        <div
-                          class="is-initial rounded-full bg-success text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
-                        >
-                          jd
+              <Sortable :list="list" :itemKey="list.id">
+                <template #item="{ element }">
+                  <div class="card cursor-pointer shadow-sm">
+                    <div class="px-2.5 pb-2 pt-1.5">
+                      <div>
+                        <div class="flex justify-between">
+                          <p
+                            class="font-medium tracking-wide text-slate-600 line-clamp-2 dark:text-navy-100"
+                          >
+                            Create Students Module {{ element.name }}
+                          </p>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="-mr-1.5 h-3.5 w-3.5 shrink-0 text-secondary dark:text-secondary-light"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
                         </div>
-                      </div>
 
-                      <div class="avatar h-5 w-5 hover:z-10">
-                        <img
-                          class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                          src="@/assets/lineone-images/200x200.png"
-                          alt="avatar"
-                        />
-                      </div>
-
-                      <div class="avatar h-5 w-5 hover:z-10">
-                        <img
-                          class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                          src="@/assets/lineone-images/200x200.png"
-                          alt="avatar"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
-                    >
-                      <div class="flex items-center space-x-0.5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                          />
-                        </svg>
-                        <span>2</span>
-                      </div>
-                      <div class="flex items-center space-x-0.5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                          />
-                        </svg>
-                        <span>4</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card cursor-pointer shadow-sm">
-                <div class="flex space-x-3 px-2.5 pb-2 pt-1.5">
-                  <div class="w-10 shrink-0 py-1">
-                    <img
-                      class="w-full"
-                      src="@/assets/lineone-images/illustrations/invite-user.svg"
-                      alt="image"
-                    />
-                  </div>
-                  <div class="flex-1 space-y-2">
-                    <div>
-                      <div class="flex justify-between">
                         <p
-                          class="font-medium tracking-wide text-slate-600 line-clamp-2 dark:text-navy-100"
+                          class="mt-px text-xs text-slate-400 dark:text-navy-300"
                         >
-                          Invite New Users
+                          Online LMS
                         </p>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="-mr-1.5 h-3.5 w-3.5 shrink-0 text-success"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
                       </div>
 
-                      <p
-                        class="mt-px text-xs text-slate-400 dark:text-navy-300"
-                      >
-                        Invite new users to chatroom
-                      </p>
-                    </div>
-                    <div class="flex flex-wrap space-x-1">
-                      <div
-                        class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                      <div class="mt-2 flex flex-wrap space-x-1">
+                        <div
+                          class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span> Daily</span>
-                      </div>
-
-                      <div
-                        class="badge space-x-1 bg-warning/10 py-1 px-1.5 text-warning dark:bg-warning/15"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-3.5 w-3.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span>7/10</span>
-                      </div>
-                    </div>
-                    <div class="flex items-end justify-between pt-1">
-                      <div class="flex items-center space-x-2">
-                        <div class="avatar h-6 w-6">
-                          <img
-                            class="rounded-full"
-                            src="@/assets/lineone-images/200x200.png"
-                            alt="avatar"
-                          />
-                        </div>
-                        <p>Raul B.</p>
-                      </div>
-
-                      <div
-                        class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
-                      >
-                        <div class="flex items-center space-x-0.5">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-3.5 w-3.5"
@@ -1243,35 +995,290 @@
                               stroke-linecap="round"
                               stroke-linejoin="round"
                               stroke-width="2"
-                              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                             />
                           </svg>
-                          <span>2</span>
+                          <span> Jun 05</span>
                         </div>
-                        <div class="flex items-center space-x-0.5">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-3.5 w-3.5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                      </div>
+
+                      <div class="mt-3 flex items-end justify-between">
+                        <div class="flex items-center space-x-2">
+                          <div class="avatar h-6 w-6">
+                            <img
+                              class="rounded-full"
+                              src="@/assets/lineone-images/200x200.png"
+                              alt="avatar"
                             />
-                          </svg>
-                          <span>4</span>
+                          </div>
+                          <p>Katrina W.</p>
+                        </div>
+                        <div
+                          class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                        >
+                          <div class="flex items-center space-x-0.5">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                              />
+                            </svg>
+                            <span>2</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div class="card cursor-pointer shadow-sm">
+                  <div class="card cursor-pointer shadow-sm">
+                    <div class="rounded-lg bg-warning/10 px-2.5 pb-2 pt-1.5">
+                      <div>
+                        <div class="flex justify-between">
+                          <p
+                            class="font-medium tracking-wide text-warning line-clamp-2"
+                          >
+                            Pay App Wages [1200$]
+                          </p>
+                        </div>
+                      </div>
+                      <div class="mt-2 flex flex-wrap space-x-1">
+                        <div
+                          class="badge space-x-1 bg-warning/10 py-1 px-1.5 text-warning dark:bg-warning/15"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-3.5 w-3.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                          <span> Sep 12</span>
+                        </div>
+                        <div
+                          class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary/15 dark:text-secondary-light"
+                        >
+                          Performance
+                        </div>
+                      </div>
+                      <div class="mt-3 flex items-end justify-between">
+                        <div class="flex flex-wrap -space-x-1.5">
+                          <div class="avatar h-5 w-5 hover:z-10">
+                            <div
+                              class="is-initial rounded-full bg-success text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
+                            >
+                              jd
+                            </div>
+                          </div>
+
+                          <div class="avatar h-5 w-5 hover:z-10">
+                            <img
+                              class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                              src="@/assets/lineone-images/200x200.png"
+                              alt="avatar"
+                            />
+                          </div>
+
+                          <div class="avatar h-5 w-5 hover:z-10">
+                            <img
+                              class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                              src="@/assets/lineone-images/200x200.png"
+                              alt="avatar"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                        >
+                          <div class="flex items-center space-x-0.5">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                              />
+                            </svg>
+                            <span>2</span>
+                          </div>
+                          <div class="flex items-center space-x-0.5">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                              />
+                            </svg>
+                            <span>4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card cursor-pointer shadow-sm">
+                    <div class="flex space-x-3 px-2.5 pb-2 pt-1.5">
+                      <div class="w-10 shrink-0 py-1">
+                        <img
+                          class="w-full"
+                          src="@/assets/lineone-images/illustrations/invite-user.svg"
+                          alt="image"
+                        />
+                      </div>
+                      <div class="flex-1 space-y-2">
+                        <div>
+                          <div class="flex justify-between">
+                            <p
+                              class="font-medium tracking-wide text-slate-600 line-clamp-2 dark:text-navy-100"
+                            >
+                              Invite New Users
+                            </p>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="-mr-1.5 h-3.5 w-3.5 shrink-0 text-success"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
+                                clip-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+
+                          <p
+                            class="mt-px text-xs text-slate-400 dark:text-navy-300"
+                          >
+                            Invite new users to chatroom
+                          </p>
+                        </div>
+                        <div class="flex flex-wrap space-x-1">
+                          <div
+                            class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                            <span> Daily</span>
+                          </div>
+
+                          <div
+                            class="badge space-x-1 bg-warning/10 py-1 px-1.5 text-warning dark:bg-warning/15"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-3.5 w-3.5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            <span>7/10</span>
+                          </div>
+                        </div>
+                        <div class="flex items-end justify-between pt-1">
+                          <div class="flex items-center space-x-2">
+                            <div class="avatar h-6 w-6">
+                              <img
+                                class="rounded-full"
+                                src="@/assets/lineone-images/200x200.png"
+                                alt="avatar"
+                              />
+                            </div>
+                            <p>Raul B.</p>
+                          </div>
+
+                          <div
+                            class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                          >
+                            <div class="flex items-center space-x-0.5">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3.5 w-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                />
+                              </svg>
+                              <span>2</span>
+                            </div>
+                            <div class="flex items-center space-x-0.5">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3.5 w-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                                />
+                              </svg>
+                              <span>4</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </Sortable>
+
+              <div id="New Task Pending" class="card cursor-pointer shadow-sm">
                 <div class="px-2.5 pb-2 pt-1.5">
                   <div>
                     <div class="flex justify-between">
@@ -1521,7 +1528,7 @@
             </div>
             <div
               id="tasks-review-list"
-              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5"
+              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
             >
               <div class="card cursor-pointer shadow-sm">
                 <div class="rounded-lg bg-info/10 px-2.5 pb-2 pt-1.5">
@@ -1914,7 +1921,7 @@
             </div>
             <div
               id="tasks-success-list"
-              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5"
+              class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
             >
               <div class="card cursor-pointer shadow-sm">
                 <div class="px-2.5 pb-2 pt-1.5">
@@ -2138,7 +2145,7 @@
           </div>
         </div>
       </div>
-    </main>
+    </div>
 
     <div id="kanban-setting-drawer" class="drawer drawer-right">
       <div
@@ -2191,7 +2198,9 @@
               </button>
             </div>
           </div>
-          <div class="is-scrollbar-hidden flex grow flex-col overflow-y-auto">
+          <div
+            class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+          >
             <div id="drawer-actions-collapse">
               <div class="ac [&.is-active_.ac-header_.ac-icon]:rotate-180">
                 <div
@@ -2729,6 +2738,10 @@
 
 <script setup>
 import { Sortable } from "sortablejs-vue3";
+
+onMounted(() => {
+  console.log("Mounted Kanban");
+});
 
 const list = [
   { id: 1, name: "One" },
