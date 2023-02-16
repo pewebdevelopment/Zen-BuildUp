@@ -1,0 +1,12 @@
+projects:
+  zenbuildup:
+    schemaPath: 'D:/Code for Life/65. Zen BuildUp/Zen-BuildUp/graphql/schema.json'
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: GraphQLAPI.ts
+        docsFilePath: src/graphql
