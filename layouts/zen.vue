@@ -113,9 +113,9 @@ const menuClick = (event, item) => {
         <PremAsideMenu :menu="menuAside" @menu-click="menuClick" />
         <slot />
         <!-- FooterBar-->
-        <FooterBar>
+        <!-- <FooterBar>
           <a href="#" target="_blank" class="text-blue-600"> Photon Ecademy</a>
-        </FooterBar>
+        </FooterBar> -->
       </div>
     </div>
   </div>
