@@ -68,7 +68,7 @@
               <div
                 class="board-draggable-handler p-2 flex items-center justify-between pb-3 sticky top-0 z-10 bg-slate-50 dark:bg-gray-800 dark:text-gray-300"
               >
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center">
                   <div
                     class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
                   >
@@ -86,7 +86,7 @@
               </div>
               <div
                 id="tasks-progress-list"
-                class="max-h-[90vh] is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                class="max-h-[90vh] is-scrollbar-hidden relative overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
               >
                 <draggable
                   class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
@@ -97,7 +97,7 @@
                 >
                   <template #item="{ element, index }">
                     <div class="card cursor-pointer shadow-sm mb-4">
-                      <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
+                      <div class="flex px-2 pb-2 pt-2 m-4">
                         <div class="w-10 shrink-0 py-1">
                           <img
                             class="w-full"
@@ -105,7 +105,7 @@
                             alt="image"
                           />
                         </div>
-                        <div class="flex-1 space-y-2">
+                        <div class="flex-1">
                           <p
                             class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
                           >
@@ -113,9 +113,9 @@
                             {{ element }}
                             <!-- {{ index + element.id + ":" + element.name  }} -->
                           </p>
-                          <div class="flex flex-wrap space-x-1">
+                          <div class="flex flex-wrap">
                             <div
-                              class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
+                              class="badge bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@
                               Update
                             </div>
                             <div
-                              class="badge space-x-1 bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
+                              class="badge bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@
                             </div>
                           </div>
                           <div class="flex items-end justify-between pt-1">
-                            <div class="flex flex-wrap -space-x-1.5">
+                            <div class="flex flex-wrap">
                               <div class="avatar h-5 w-5 hover:z-10">
                                 <div
                                   class="is-initial rounded-full bg-info text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
@@ -185,9 +185,9 @@
                               </div>
                             </div>
                             <div
-                              class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                              class="flex items-center text-xs text-slate-400 dark:text-navy-300"
                             >
-                              <div class="flex items-center space-x-0.5">
+                              <div class="flex items-center">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   class="h-3.5 w-3.5"
@@ -204,7 +204,7 @@
                                 </svg>
                                 <span>3</span>
                               </div>
-                              <div class="flex items-center space-x-0.5">
+                              <div class="flex items-center">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   class="h-3.5 w-3.5"
