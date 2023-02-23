@@ -60,7 +60,7 @@
       >
         <template #item="{ element, index }">
           <div
-            class="max-h-[90vh] draggable inline-block relative max-w-full shrink-0 pr-3 overflow-x-auto scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded overflow-y-scroll duration-[.25s]"
+            class="draggable inline-block relative max-w-full shrink-0 pr-3 overflow-x-auto"
           >
             <div
               class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
@@ -86,7 +86,7 @@
               </div>
               <div
                 id="tasks-progress-list"
-                class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                class="max-h-[90vh] is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
               >
                 <draggable
                   class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
