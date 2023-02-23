@@ -191,194 +191,226 @@
       </div>
 
       <div class="flex h-[calc(100vh-8.5rem)] flex-row">
-        <draggable
+        <div
           id="tasks-group"
-          :list="taskCategories"
-          group="Categories"
-          :itemKey="`${taskCategories.categoryID}`"
           class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 px-[var(--margin-x)] transition-all duration-[.25s]"
         >
-          <template #item="{ element, index }">
-            <div
-              class="draggable inline-block relative max-h-full max-w-full shrink-0 pr-3"
-            >
+          <draggable
+            class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+            :list="taskCategories"
+            group="people"
+            @change="log"
+            :itemKey="taskCategories.categoryID"
+          >
+            <template #item="{ element, index }">
               <div
-                class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
+                class="draggable inline-block relative max-h-full max-w-full shrink-0 pr-3"
               >
                 <div
-                  class="board-draggable-handler flex items-center justify-between px-0.5 pb-3"
+                  class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
                 >
-                  <div class="flex items-center space-x-2">
-                    <div
-                      class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
-                    >
-                      <i class="fa fa-spinner text-base"></i>
-                    </div>
-                    <h3 class="text-base text-slate-700 dark:text-navy-100">
-                      In Progress
-                      {{ element.name + index }}
-                    </h3>
-                  </div>
-
-                  <div id="tasks-progress-menu" class="inline-flex">
-                    <PopperOptions />
-                  </div>
-                </div>
-                <div
-                  id="tasks-progress-list"
-                  class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
-                >
-                  <draggable
-                    class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
-                    :list="element.tasksList"
-                    group="Tasks"
-                    @change="log"
-                    :itemKey="`${element.tasksList[index]?.id}`"
+                  <div
+                    class="board-draggable-handler flex items-center justify-between px-0.5 pb-3"
                   >
-                    <template #item="{ element, index }">
-                      <div class="card cursor-pointer shadow-sm mb-4">
-                        <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
-                          <div class="w-10 shrink-0 py-1">
-                            <img
-                              class="w-full"
-                              src="@/assets/lineone-images/illustrations/creativedesign-char.svg"
-                              alt="image"
-                            />
-                          </div>
-                          <div class="flex-1 space-y-2">
-                            <p
-                              class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
-                            >
-                              Update Design
-                              {{ element }}
-                              <!-- {{ index + element.id + ":" + element.name  }} -->
-                            </p>
-                            <div class="flex flex-wrap space-x-1">
-                              <div
-                                class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-3.5 w-3.5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                  />
-                                </svg>
-                                <span> Sep 12 </span>
-                              </div>
-                              <div
-                                class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary-light/15 dark:text-secondary-light"
-                              >
-                                Update
-                              </div>
-                              <div
-                                class="badge space-x-1 bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-3.5 w-3.5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                  />
-                                </svg>
-                                <span>4/5</span>
-                              </div>
+                    <div class="flex items-center space-x-2">
+                      <div
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
+                      >
+                        <i class="fa fa-spinner text-base"></i>
+                      </div>
+                      <h3 class="text-base text-slate-700 dark:text-navy-100">
+                        In Progress
+                        {{ element.name + index }}
+                      </h3>
+                    </div>
+
+                    <div id="tasks-progress-menu" class="inline-flex">
+                      <PopperOptions />
+                    </div>
+                  </div>
+                  <div
+                    id="tasks-progress-list"
+                    class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                  >
+                    <draggable
+                      :list="taskCategories.taskList"
+                      :itemKey="
+                        taskCategories.taskList[taskCategories.categoryID - 1]
+                          .id
+                      "
+                      @update=""
+                      class="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                    >
+                      <template>
+                        <div></div>
+                      </template>
+                      <!-- <template #item="{ element }">
+                        <div class="card cursor-pointer shadow-sm mb-4">
+                          <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
+                            <div class="w-10 shrink-0 py-1">
+                              <img
+                                class="w-full"
+                                src="@/assets/lineone-images/illustrations/creativedesign-char.svg"
+                                alt="image"
+                              />
                             </div>
-                            <div class="flex items-end justify-between pt-1">
-                              <div class="flex flex-wrap -space-x-1.5">
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <div
-                                    class="is-initial rounded-full bg-info text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
+                            <div class="flex-1 space-y-2">
+                              <p
+                                class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
+                              >
+                                Update Design
+                                {{ " " + " " }}
+                              </p>
+                              <div class="flex flex-wrap space-x-1">
+                                <div
+                                  class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3.5 w-3.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
                                   >
-                                    jd
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+                                  </svg>
+                                  <span> Sep 12</span>
+                                </div>
+                                <div
+                                  class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary-light/15 dark:text-secondary-light"
+                                >
+                                  Update
+                                </div>
+                                <div
+                                  class="badge space-x-1 bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3.5 w-3.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M5 13l4 4L19 7"
+                                    />
+                                  </svg>
+                                  <span>4/5</span>
+                                </div>
+                              </div>
+                              <div class="flex items-end justify-between pt-1">
+                                <div class="flex flex-wrap -space-x-1.5">
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <div
+                                      class="is-initial rounded-full bg-info text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
+                                    >
+                                      jd
+                                    </div>
+                                  </div>
+
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <img
+                                      class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                                      src="@/assets/lineone-images/200x200.png"
+                                      alt="avatar"
+                                    />
+                                  </div>
+
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <img
+                                      class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                                      src="@/assets/lineone-images/200x200.png"
+                                      alt="avatar"
+                                    />
                                   </div>
                                 </div>
-
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <img
-                                    class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                                    src="@/assets/lineone-images/200x200.png"
-                                    alt="avatar"
-                                  />
-                                </div>
-
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <img
-                                    class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                                    src="@/assets/lineone-images/200x200.png"
-                                    alt="avatar"
-                                  />
-                                </div>
-                              </div>
-                              <div
-                                class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
-                              >
-                                <div class="flex items-center space-x-0.5">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-3.5 w-3.5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                                    />
-                                  </svg>
-                                  <span>3</span>
-                                </div>
-                                <div class="flex items-center space-x-0.5">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-3.5 w-3.5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                                    />
-                                  </svg>
-                                  <span>1</span>
+                                <div
+                                  class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                                >
+                                  <div class="flex items-center space-x-0.5">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="h-3.5 w-3.5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                      />
+                                    </svg>
+                                    <span>3</span>
+                                  </div>
+                                  <div class="flex items-center space-x-0.5">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="h-3.5 w-3.5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                                      />
+                                    </svg>
+                                    <span>1</span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </template>
-                  </draggable>
+                      </template> -->
+                    </draggable>
+                  </div>
+                  <!-- New Task Div -->
+                  <div class="flex justify-center py-2">
+                    <button
+                      class="flex items-center justify-center space-x-2 font-medium text-slate-600 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
+                      <span>New Task</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </template>
-        </draggable>
-        <div id="new-board-rhs" class="w-72 shrink-0">
-          <button
-            class="btn w-full bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-          >
-            New Board
-          </button>
+            </template>
+          </draggable>
+
+          <div id="new-board-rhs" class="w-72 shrink-0">
+            <button
+              class="btn w-full bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
+            >
+              New Board
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -395,27 +427,27 @@ onMounted(() => {
 });
 
 const list1 = reactive([
-  { id: 133, name: "One" },
-  { id: 2434, name: "Two" },
-  // { id: 33, name: "Three" },
-  // { id: 44, name: "Four" },
-  // { id: 53334, name: "Five" },
+  { id: 1, name: "One" },
+  { id: 2, name: "Two" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
 ]);
 
 const list2 = reactive([
-  { id: 13434, name: "One" },
-  { id: 2434, name: "Two" },
-  // { id: 4343, name: "Three" },
-  // { id: 4344, name: "Four" },
-  // { id: 34345, name: "Five" },
+  { id: 1, name: "One" },
+  { id: 2, name: "Two" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
 ]);
 
 const list3 = reactive([
-  { id: 122, name: "One" },
-  { id: 23434, name: "Two" },
-  // { id: 34343, name: "Three" },
-  // { id: 43434, name: "Four" },
-  // { id: 53443, name: "Five" },
+  { id: 1, name: "One" },
+  { id: 2, name: "Two" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
 ]);
 
 const taskCategories = reactive([
@@ -425,8 +457,6 @@ const taskCategories = reactive([
   // { categoryID: 4, name: "CatFour", tasksList: list4 },
   // { categoryID: 5, name: "CatFive", tasksList: list5 },
 ]);
-
-const log = () => {};
 
 // const onMove = (event) => {
 //   console.log(event);
