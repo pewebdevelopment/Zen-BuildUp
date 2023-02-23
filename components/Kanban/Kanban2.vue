@@ -190,255 +190,260 @@
         </div>
       </div>
 
-      <div class="flex h-[calc(100vh-8.5rem)] flex-grow flex-col">
+      <div class="flex h-[calc(100vh-8.5rem)] flex-grow">
         <div
           id="tasks-group"
-          class="relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar flex w-full items-start space-x-4 overflow-x-auto overflow-y-hidden px-[var(--margin-x)] transition-all duration-[.25s]"
+          class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar overflow-x-auto overflow-y-auto px-[var(--margin-x)] transition-all duration-[.25s]"
         >
           <Sortable :list="taskCategories" :itemKey="taskCategories.id">
             <template #item="{ element, index }">
               <div
-                class="draggable board-draggable relative flex max-h-full w-96 shrink-0 flex-col"
+                class="draggable flex relative flex-row max-h-full w-96 shrink-0"
               >
                 <div
-                  class="board-draggable-handler flex items-center justify-between px-0.5 pb-3"
+                  class="draggable board-draggable relative flex max-h-full w-96 shrink-0 flex-col"
                 >
-                  <div class="flex items-center space-x-2">
-                    <div
-                      class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
-                    >
-                      <i class="fa fa-spinner text-base"></i>
-                    </div>
-                    <h3 class="text-base text-slate-700 dark:text-navy-100">
-                      In Progress
-                      {{ element.name + " " + element.id + " " + index }}
-                    </h3>
-                  </div>
-
-                  <div id="tasks-progress-menu" class="inline-flex">
-                    <Popper>
-                      <button
-                        class="popper-ref btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
+                  <div
+                    class="board-draggable-handler flex items-center justify-between px-0.5 pb-3"
+                  >
+                    <div class="flex items-center space-x-2">
+                      <div
+                        class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
+                        <i class="fa fa-spinner text-base"></i>
+                      </div>
+                      <h3 class="text-base text-slate-700 dark:text-navy-100">
+                        In Progress
+                        {{ element.name + " " + element.id + " " + index }}
+                      </h3>
+                    </div>
+
+                    <div id="tasks-progress-menu" class="inline-flex">
+                      <Popper>
+                        <button
+                          class="popper-ref btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                          />
-                        </svg>
-                      </button>
-                      <template #content>
-                        <div class="popper-root">
-                          <div
-                            class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
                           >
-                            <ul>
-                              <li>
-                                <a
-                                  href="#"
-                                  class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                  >Action</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                  >Another Action</a
-                                >
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                  >Something else</a
-                                >
-                              </li>
-                            </ul>
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+                            />
+                          </svg>
+                        </button>
+                        <template #content>
+                          <div class="popper-root">
                             <div
-                              class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                            ></div>
-                            <ul>
-                              <li>
-                                <a
-                                  href="#"
-                                  class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                  >Separated Link</a
+                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
+                            >
+                              <ul>
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                    >Action</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                    >Another Action</a
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                    >Something else</a
+                                  >
+                                </li>
+                              </ul>
+                              <div
+                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
+                              ></div>
+                              <ul>
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
+                                    >Separated Link</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </template>
+                      </Popper>
+                    </div>
+                  </div>
+                  <div
+                    id="tasks-progress-list"
+                    class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                  >
+                    <Sortable :list="list" :itemKey="list.id" @update="">
+                      <template #item="{ element }">
+                        <div class="card cursor-pointer shadow-sm mb-4">
+                          <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
+                            <div class="w-10 shrink-0 py-1">
+                              <img
+                                class="w-full"
+                                src="@/assets/lineone-images/illustrations/creativedesign-char.svg"
+                                alt="image"
+                              />
+                            </div>
+                            <div class="flex-1 space-y-2">
+                              <p
+                                class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
+                              >
+                                Update Design
+                                {{ element.name + " " + element.id }}
+                              </p>
+                              <div class="flex flex-wrap space-x-1">
+                                <div
+                                  class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
                                 >
-                              </li>
-                            </ul>
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3.5 w-3.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                    />
+                                  </svg>
+                                  <span> Sep 12</span>
+                                </div>
+                                <div
+                                  class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary-light/15 dark:text-secondary-light"
+                                >
+                                  Update
+                                </div>
+                                <div
+                                  class="badge space-x-1 bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3.5 w-3.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M5 13l4 4L19 7"
+                                    />
+                                  </svg>
+                                  <span>4/5</span>
+                                </div>
+                              </div>
+                              <div class="flex items-end justify-between pt-1">
+                                <div class="flex flex-wrap -space-x-1.5">
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <div
+                                      class="is-initial rounded-full bg-info text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
+                                    >
+                                      jd
+                                    </div>
+                                  </div>
+
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <img
+                                      class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                                      src="@/assets/lineone-images/200x200.png"
+                                      alt="avatar"
+                                    />
+                                  </div>
+
+                                  <div class="avatar h-5 w-5 hover:z-10">
+                                    <img
+                                      class="rounded-full ring-1 ring-white dark:ring-navy-700"
+                                      src="@/assets/lineone-images/200x200.png"
+                                      alt="avatar"
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
+                                >
+                                  <div class="flex items-center space-x-0.5">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="h-3.5 w-3.5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                      />
+                                    </svg>
+                                    <span>3</span>
+                                  </div>
+                                  <div class="flex items-center space-x-0.5">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="h-3.5 w-3.5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                                      />
+                                    </svg>
+                                    <span>1</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </template>
-                    </Popper>
+                    </Sortable>
                   </div>
-                </div>
-                <div
-                  id="tasks-progress-list"
-                  class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
-                >
-                  <Sortable :list="list" :itemKey="list.id" @update="">
-                    <template #item="{ element }">
-                      <div class="card cursor-pointer shadow-sm mb-4">
-                        <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
-                          <div class="w-10 shrink-0 py-1">
-                            <img
-                              class="w-full"
-                              src="@/assets/lineone-images/illustrations/creativedesign-char.svg"
-                              alt="image"
-                            />
-                          </div>
-                          <div class="flex-1 space-y-2">
-                            <p
-                              class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
-                            >
-                              Update Design {{ element.name }}
-                            </p>
-                            <div class="flex flex-wrap space-x-1">
-                              <div
-                                class="badge space-x-1 bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-3.5 w-3.5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                  />
-                                </svg>
-                                <span> Sep 12</span>
-                              </div>
-                              <div
-                                class="badge bg-secondary/10 py-1 px-1.5 text-secondary dark:bg-secondary-light/15 dark:text-secondary-light"
-                              >
-                                Update
-                              </div>
-                              <div
-                                class="badge space-x-1 bg-info/10 py-1 px-1.5 text-info dark:bg-info/15"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-3.5 w-3.5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 13l4 4L19 7"
-                                  />
-                                </svg>
-                                <span>4/5</span>
-                              </div>
-                            </div>
-                            <div class="flex items-end justify-between pt-1">
-                              <div class="flex flex-wrap -space-x-1.5">
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <div
-                                    class="is-initial rounded-full bg-info text-tiny+ uppercase text-white ring-1 ring-white dark:ring-navy-700"
-                                  >
-                                    jd
-                                  </div>
-                                </div>
-
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <img
-                                    class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                                    src="@/assets/lineone-images/200x200.png"
-                                    alt="avatar"
-                                  />
-                                </div>
-
-                                <div class="avatar h-5 w-5 hover:z-10">
-                                  <img
-                                    class="rounded-full ring-1 ring-white dark:ring-navy-700"
-                                    src="@/assets/lineone-images/200x200.png"
-                                    alt="avatar"
-                                  />
-                                </div>
-                              </div>
-                              <div
-                                class="flex items-center space-x-2 text-xs text-slate-400 dark:text-navy-300"
-                              >
-                                <div class="flex items-center space-x-0.5">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-3.5 w-3.5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                                    />
-                                  </svg>
-                                  <span>3</span>
-                                </div>
-                                <div class="flex items-center space-x-0.5">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-3.5 w-3.5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                                    />
-                                  </svg>
-                                  <span>1</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </template>
-                  </Sortable>
-                </div>
-                <!-- New Task Div -->
-                <div class="flex justify-center py-2">
-                  <button
-                    class="flex items-center justify-center space-x-2 font-medium text-slate-600 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      stroke-width="1.5"
+                  <!-- New Task Div -->
+                  <div class="flex justify-center py-2">
+                    <button
+                      class="flex items-center justify-center space-x-2 font-medium text-slate-600 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
                     >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                    <span>New Task</span>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                        />
+                      </svg>
+                      <span>New Task</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </template>
@@ -473,9 +478,9 @@ const taskCategories = reactive([
 const list = reactive([
   { id: 1, name: "One" },
   { id: 2, name: "Two" },
-  { id: 3, name: "Three" },
-  { id: 4, name: "Four" },
-  { id: 5, name: "Five" },
+  // { id: 3, name: "Three" },
+  // { id: 4, name: "Four" },
+  // { id: 5, name: "Five" },
 ]);
 
 // const onMove = (event) => {
