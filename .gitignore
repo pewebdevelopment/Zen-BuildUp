@@ -8,11 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 .nuxt
 .nuxt/types
-models 
+models
 
 node_modules
 
-# amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/mock-data
