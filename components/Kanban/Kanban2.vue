@@ -196,12 +196,9 @@
           class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar overflow-x-auto overflow-y-auto px-[var(--margin-x)] transition-all duration-[.25s]"
         >
           <Sortable :list="taskCategories" :itemKey="taskCategories.id">
-            <template
-              #item="{ element, index }"
-              class="flex flex-row flex-grow"
-            >
+            <template #item="{ element, index }" class="">
               <div
-                class="draggable flex relative flex-row max-h-full max-w-full shrink-0"
+                class="draggable inline-block relative max-h-full max-w-full shrink-0 pr-3"
               >
                 <div
                   class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
@@ -481,9 +478,9 @@ const taskCategories = reactive([
 const list = reactive([
   { id: 1, name: "One" },
   { id: 2, name: "Two" },
-  // { id: 3, name: "Three" },
-  // { id: 4, name: "Four" },
-  // { id: 5, name: "Five" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
 ]);
 
 // const onMove = (event) => {
