@@ -200,7 +200,7 @@
             :list="taskCategories"
             group="people"
             @change="log"
-            :itemKey="taskCategories.id"
+            :itemKey="taskCategories.categoryID"
           >
             <template #item="{ element, index }">
               <div
@@ -220,7 +220,7 @@
                       </div>
                       <h3 class="text-base text-slate-700 dark:text-navy-100">
                         In Progress
-                        {{ element.name + " " + element.id + " " + index }}
+                        {{ element.name + index }}
                       </h3>
                     </div>
 
@@ -233,8 +233,11 @@
                     class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
                   >
                     <draggable
-                      :list="list"
-                      :itemKey="list.id"
+                      :list="taskCategories.taskList"
+                      :itemKey="
+                        taskCategories.taskList[taskCategories.categoryID - 1]
+                          .id
+                      "
                       @update=""
                       class="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
                     >
@@ -253,7 +256,7 @@
                                 class="font-medium tracking-wide text-slate-600 dark:text-navy-100"
                               >
                                 Update Design
-                                {{ element.name + " " + element.id }}
+                                {{ element + " " }}
                               </p>
                               <div class="flex flex-wrap space-x-1">
                                 <div
@@ -420,19 +423,36 @@ onMounted(() => {
   console.log("Mounted Kanban");
 });
 
-const taskCategories = reactive([
-  { id: 1, name: "CatOne" },
-  { id: 2, name: "CatTwo" },
-  { id: 3, name: "CatThree" },
-  { id: 4, name: "CatFour" },
-]);
-
-const list = reactive([
+const list1 = reactive([
   { id: 1, name: "One" },
   { id: 2, name: "Two" },
   { id: 3, name: "Three" },
   { id: 4, name: "Four" },
   { id: 5, name: "Five" },
+]);
+
+const list2 = reactive([
+  { id: 1, name: "One" },
+  { id: 2, name: "Two" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
+]);
+
+const list3 = reactive([
+  { id: 1, name: "One" },
+  { id: 2, name: "Two" },
+  { id: 3, name: "Three" },
+  { id: 4, name: "Four" },
+  { id: 5, name: "Five" },
+]);
+
+const taskCategories = reactive([
+  { categoryID: 1, name: "CatOne", tasksList: list1 },
+  { categoryID: 2, name: "CatTwo", tasksList: list2 },
+  { categoryID: 3, name: "CatThree", tasksList: list3 },
+  // { categoryID: 4, name: "CatFour", tasksList: list4 },
+  // { categoryID: 5, name: "CatFive", tasksList: list5 },
 ]);
 
 // const onMove = (event) => {
