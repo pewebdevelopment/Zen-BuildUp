@@ -66,11 +66,11 @@
               class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
             >
               <div
-                class="board-draggable-handler p-2 flex items-center justify-between pb-3 sticky top-0 z-10 bg-slate-50 dark:bg-gray-800 dark:text-gray-300"
+                class="board-draggable-handler p-2 rounded-b-lg flex items-center justify-between pb-3 sticky top-0 z-10 bg-slate-50 dark:bg-gray-800 dark:text-gray-300"
               >
                 <div class="flex items-center">
                   <div
-                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-info/10 text-info"
+                    class="flex h-8 w-8 mr-2 items-center justify-center rounded-lg bg-info/10 text-info"
                   >
                     <i class="fa fa-spinner text-base"></i>
                   </div>

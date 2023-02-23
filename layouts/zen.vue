@@ -23,7 +23,7 @@ useMainStore().setUser({
 });
 
 const layoutAsidePadding = computed(() =>
-  layoutStore.isAsideLgActive ? "lg:pl-20" : "xl:pl-20"
+  layoutStore.isAsideLgActive ? "lg:px-20" : "xl:px-20"
 );
 
 const styleStore = useStyleStore();
