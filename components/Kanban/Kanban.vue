@@ -5,9 +5,7 @@
       class="flex items-center justify-between space-x-2 px-[var(--margin-x)] py-1 transition-all duration-[.25s]"
     >
       <div class="flex items-center space-x-1">
-        <h3
-          class="text-lg font-medium text-slate-700 line-clamp-1 dark:text-navy-50"
-        >
+        <h3 class="text-lg font-medium text-slate-700 dark:text-navy-50">
           Banking App
         </h3>
         <button
@@ -189,14 +187,14 @@
     </div>
 
     <div
-      class="h-full flex flex-row max-w-[100vw] overflow-x-auto scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar w-full items-start space-x-4 overflow-y-hidden px-[var(--margin-x)] transition-all duration-[.25s]"
+      class="h-full flex flex-row max-w-[100vw] overflow-x-auto scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar w-full items-start overflow-y-hidden transition-all duration-[.25s]"
     >
       <draggable
         id="tasks-group"
         :list="taskCategories"
         group="Categories"
         :itemKey="`${taskCategories.categoryID}`"
-        class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 px-[var(--margin-x)] transition-all"
+        class="flex flex-row w-full items-start relative p-0.5 transition-all"
       >
         <template #item="{ element, index }">
           <div

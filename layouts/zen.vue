@@ -67,7 +67,7 @@ const menuClick = (event, item) => {
           layoutAsidePadding,
           { 'ml-60 lg:ml-0': layoutStore.isAsideMobileExpanded },
         ]"
-        class="pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100"
+        class="pt-7 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100"
       >
         <!-- The  Navbar -->
         <NavBar
