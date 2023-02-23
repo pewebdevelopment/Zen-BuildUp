@@ -282,10 +282,10 @@
               id="tasks-progress-list"
               class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
             >
-              <Sortable :list="list" :itemKey="list.id" @remove="onRemove">
+              <Sortable :list="list" :itemKey="list.id" @update="onRemove">
                 <template #item="{ element }">
-                  <div class="card cursor-pointer shadow-sm">
-                    <div class="flex space-x-3 px-2.5 pb-2 pt-1.5">
+                  <div class="card cursor-pointer shadow-sm mb-4">
+                    <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
                       <div class="w-10 shrink-0 py-1">
                         <img
                           class="w-full"
@@ -1067,7 +1067,7 @@ const onAdd = (event) => {
 
 <style>
 :root {
-  --popper-theme-background-color: #333333;
+  --popper-theme-background-color: #040000;
   --popper-theme-background-color-hover: #333333;
   --popper-theme-text-color: #ffffff;
   --popper-theme-border-width: 0px;
