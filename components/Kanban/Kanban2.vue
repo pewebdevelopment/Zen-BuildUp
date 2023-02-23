@@ -190,18 +190,21 @@
         </div>
       </div>
 
-      <div class="flex h-[calc(100vh-8.5rem)] flex-grow">
+      <div class="flex h-[calc(100vh-8.5rem)] flex-row">
         <div
           id="tasks-group"
           class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar overflow-x-auto overflow-y-auto px-[var(--margin-x)] transition-all duration-[.25s]"
         >
           <Sortable :list="taskCategories" :itemKey="taskCategories.id">
-            <template #item="{ element, index }">
+            <template
+              #item="{ element, index }"
+              class="flex flex-row flex-grow"
+            >
               <div
-                class="draggable flex relative flex-row max-h-full w-96 shrink-0"
+                class="draggable flex relative flex-row max-h-full max-w-full shrink-0"
               >
                 <div
-                  class="draggable board-draggable relative flex max-h-full w-96 shrink-0 flex-col"
+                  class="draggable board-draggable relative flex max-h-full max-w-full shrink-0 flex-col"
                 >
                   <div
                     class="board-draggable-handler flex items-center justify-between px-0.5 pb-3"
