@@ -190,7 +190,7 @@
         </div>
       </div>
 
-      <div class="flex h-[calc(100vh-8.5rem)] flex-row">
+      <div class="flex h-full flex-row">
         <draggable
           id="tasks-group"
           :list="taskCategories"
@@ -397,9 +397,9 @@ onMounted(() => {
 const list1 = reactive([
   { id: 133, name: "One" },
   { id: 2434, name: "Two" },
-  // { id: 33, name: "Three" },
-  // { id: 44, name: "Four" },
-  // { id: 53334, name: "Five" },
+  { id: 33, name: "Three" },
+  { id: 44, name: "Four" },
+  { id: 53334, name: "Five" },
 ]);
 
 const list2 = reactive([
