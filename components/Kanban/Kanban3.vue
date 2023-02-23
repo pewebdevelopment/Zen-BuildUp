@@ -193,10 +193,16 @@
       <div class="flex h-[calc(100vh-8.5rem)] flex-row">
         <div
           id="tasks-group"
-          class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar overflow-x-auto overflow-y-auto px-[var(--margin-x)] transition-all duration-[.25s]"
+          class="flex flex-row w-full items-start space-x-4 relative space-y-2.5 p-0.5 px-[var(--margin-x)] transition-all duration-[.25s]"
         >
-          <Sortable :list="taskCategories" :itemKey="taskCategories.id">
-            <template #item="{ element, index }" class="">
+          <draggable
+            class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+            :list="taskCategories"
+            group="people"
+            @change="log"
+            :itemKey="taskCategories.id"
+          >
+            <template #item="{ element, index }">
               <div
                 class="draggable inline-block relative max-h-full max-w-full shrink-0 pr-3"
               >
@@ -219,76 +225,19 @@
                     </div>
 
                     <div id="tasks-progress-menu" class="inline-flex">
-                      <Popper>
-                        <button
-                          class="popper-ref btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                            />
-                          </svg>
-                        </button>
-                        <template #content>
-                          <div class="popper-root">
-                            <div
-                              class="popper-box rounded-md border border-slate-150 bg-white py-1.5 font-inter dark:border-navy-500 dark:bg-navy-700"
-                            >
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Another Action</a
-                                  >
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Something else</a
-                                  >
-                                </li>
-                              </ul>
-                              <div
-                                class="my-1 h-px bg-slate-150 dark:bg-navy-500"
-                              ></div>
-                              <ul>
-                                <li>
-                                  <a
-                                    href="#"
-                                    class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                                    >Separated Link</a
-                                  >
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </template>
-                      </Popper>
+                      <PopperOptions />
                     </div>
                   </div>
                   <div
                     id="tasks-progress-list"
                     class="is-scrollbar-hidden relative space-y-2.5 overflow-y-auto p-0.5 scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
                   >
-                    <Sortable :list="list" :itemKey="list.id" @update="">
+                    <draggable
+                      :list="list"
+                      :itemKey="list.id"
+                      @update=""
+                      class="overflow-y-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
+                    >
                       <template #item="{ element }">
                         <div class="card cursor-pointer shadow-sm mb-4">
                           <div class="flex space-x-3 px-2.5 pb-2 pt-1.5 m-4">
@@ -420,7 +369,7 @@
                           </div>
                         </div>
                       </template>
-                    </Sortable>
+                    </draggable>
                   </div>
                   <!-- New Task Div -->
                   <div class="flex justify-center py-2">
@@ -447,7 +396,8 @@
                 </div>
               </div>
             </template>
-          </Sortable>
+          </draggable>
+
           <div id="new-board-rhs" class="w-72 shrink-0">
             <button
               class="btn w-full bg-slate-150 font-medium text-slate-800 hover:bg-slate-200 focus:bg-slate-200 active:bg-slate-200/80 dark:bg-navy-500 dark:text-navy-50 dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
@@ -462,8 +412,9 @@
 </template>
 
 <script setup>
-import { Sortable } from "sortablejs-vue3";
-import Popper from "vue3-popper";
+import { reactive, onMounted } from "vue";
+import draggable from "vuedraggable";
+import PopperOptions from "@/components/Kanban/PopperOptions.vue";
 
 onMounted(() => {
   console.log("Mounted Kanban");
@@ -473,6 +424,7 @@ const taskCategories = reactive([
   { id: 1, name: "CatOne" },
   { id: 2, name: "CatTwo" },
   { id: 3, name: "CatThree" },
+  { id: 4, name: "CatFour" },
 ]);
 
 const list = reactive([
@@ -492,37 +444,4 @@ const list = reactive([
 // };
 </script>
 
-<style>
-:root {
-  --popper-theme-background-color: #040000;
-  --popper-theme-background-color-hover: #333333;
-  --popper-theme-text-color: #ffffff;
-  --popper-theme-border-width: 0px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 32px;
-  --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
-}
-
-.dark {
-  --popper-theme-background-color: #333333;
-  --popper-theme-background-color-hover: #333333;
-  --popper-theme-text-color: white;
-  --popper-theme-border-width: 0px;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 32px;
-  --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
-}
-
-.light {
-  --popper-theme-background-color: #ffffff;
-  --popper-theme-background-color-hover: #ffffff;
-  --popper-theme-text-color: #333333;
-  --popper-theme-border-width: 1px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-color: #eeeeee;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 32px;
-  --popper-theme-box-shadow: 0 6px 30px -6px rgba(0, 0, 0, 0.25);
-}
-</style>
+<style></style>
