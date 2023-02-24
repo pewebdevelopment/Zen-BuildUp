@@ -252,10 +252,10 @@ onMounted(async () => {
 
 const getTasks = async () => {
   try {
-    const tasksDataStore = await DataStore.query(Task);
-    console.log(tasksDataStore);
-    // const tasks = await API.graphql({ query: listTasks });
-    // console.log(tasks);
+    // const tasksDataStore = await DataStore.query(Task);
+    // console.log(tasksDataStore);
+    const tasks = await API.graphql({ query: listTasks });
+    console.log(tasks);
     // return tasks;
   } catch (err) {
     console.log("error fetching tasks:", err);
