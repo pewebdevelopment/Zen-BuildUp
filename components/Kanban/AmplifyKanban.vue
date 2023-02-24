@@ -252,7 +252,8 @@ onMounted(() => {
 
 const getTasks = async () => {
   try {
-    // const tasks = await DataStore.query(Task);
+    // const tasksDataStore = await DataStore.query(Task);
+    // console.log(tasksDataStore);
     const tasks = await API.graphql({ query: listTasks });
     console.log(tasks);
     return tasks;
