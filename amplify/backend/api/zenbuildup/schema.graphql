@@ -1,8 +1,28 @@
-type Students @model @auth(rules: [{ allow: public }]) {
+type Blog @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  posts: [Post] @hasMany
+}
+
+type Post @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  blog: Blog @belongsTo
+  comments: [Comment] @hasMany
+}
+
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  post: Post @belongsTo
+  content: String!
+}
+
+type Student @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   email: AWSEmail
   createdAt: AWSDateTime
+  task: [Task] @hasMany(indexName: "byTask", fields: ["id"])
 }
 
 enum TaskStatus {
@@ -14,11 +34,14 @@ enum TaskStatus {
   ARCHIVED
 }
 
-type Task @model @auth(rules: [{ allow: public }]) {
+type Task @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String
   thumbnailURL: String
   dueAt: AWSDateTime
   status: [TaskStatus]
+  student: Student @belongsTo(fields: ["studentID"])
+  studentID: ID @index(name: "byTask", sortKeyFields: ["name"])
 }
+ 

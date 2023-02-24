@@ -238,13 +238,28 @@
 </template>
 
 <script setup>
+import { API, DataStore } from "aws-amplify";
+import { listTasks } from "@/graphql/queries";
+import { Task } from "@/models";
 import { reactive, onMounted } from "vue";
 import draggable from "vuedraggable";
 import PopperOptions from "@/components/Kanban/PopperOptions.vue";
 
 onMounted(() => {
   console.log("Mounted Kanban");
+  getTasks();
 });
+
+const getTasks = async () => {
+  try {
+    // const tasks = await DataStore.query(Task);
+    const tasks = await API.graphql({ query: listTasks });
+    console.log(tasks);
+    return tasks;
+  } catch (err) {
+    console.log("error fetching tasks:", err);
+  }
+};
 
 const list1 = reactive([
   { id: 133, name: "One" },

@@ -1,5 +1,6 @@
 {
-  "AppSyncApiName": "ZenBuildUp",
+  "AppSyncApiName": "zenbuildup",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthModeLastUpdated": "2023-02-24T06:53:18.209Z"
 }
