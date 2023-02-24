@@ -238,7 +238,7 @@
 </template>
 
 <script setup>
-import { API, DataStore } from "aws-amplify";
+import { Amplify, API, DataStore } from "aws-amplify";
 import { listTasks } from "@/graphql/queries";
 import { Task } from "@/models";
 import { reactive, onMounted } from "vue";
