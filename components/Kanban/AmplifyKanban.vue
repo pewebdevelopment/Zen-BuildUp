@@ -245,18 +245,18 @@ import { reactive, onMounted } from "vue";
 import draggable from "vuedraggable";
 import PopperOptions from "@/components/Kanban/PopperOptions.vue";
 
-onMounted(() => {
+onMounted(async () => {
   console.log("Mounted Kanban");
-  getTasks();
+  await getTasks();
 });
 
 const getTasks = async () => {
   try {
-    // const tasksDataStore = await DataStore.query(Task);
-    // console.log(tasksDataStore);
-    const tasks = await API.graphql({ query: listTasks });
-    console.log(tasks);
-    return tasks;
+    const tasksDataStore = await DataStore.query(Task);
+    console.log(tasksDataStore);
+    // const tasks = await API.graphql({ query: listTasks });
+    // console.log(tasks);
+    // return tasks;
   } catch (err) {
     console.log("error fetching tasks:", err);
   }
