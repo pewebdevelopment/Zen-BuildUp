@@ -113,7 +113,7 @@
                             {{ element }}
                             <!-- {{ index + element.id + ":" + element.name  }} -->
                           </p>
-                          <div class="flex flex-wrap">
+                          <div class="flex flex-wrap gap-1">
                             <div
                               class="badge bg-slate-150 py-1 px-1.5 text-slate-800 dark:bg-navy-500 dark:text-navy-100"
                             >
