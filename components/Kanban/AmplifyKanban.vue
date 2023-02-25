@@ -258,7 +258,7 @@ const getTasks = async () => {
     console.log(tasks);
     // return tasks;
   } catch (err) {
-    console.log("error fetching tasks:", err);
+    // console.log("error fetching tasks:", err);
   }
 };
 
