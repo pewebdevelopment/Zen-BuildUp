@@ -238,9 +238,9 @@
 </template>
 
 <script setup>
-import { Amplify, API, DataStore } from "aws-amplify";
+import { API, DataStore } from "aws-amplify";
 import { listTasks } from "@/graphql/queries";
-import { Task } from "@/models";
+import { Task, Student } from "@/models";
 import { reactive, onMounted } from "vue";
 import draggable from "vuedraggable";
 import PopperOptions from "@/components/Kanban/PopperOptions.vue";
@@ -252,13 +252,17 @@ onMounted(async () => {
 
 const getTasks = async () => {
   try {
+    // https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js/#persistence-operations
+    // DataStore.clear();
+    // const studentsDataStore = await DataStore.query(Student);
+    // console.log("students here:", studentsDataStore);
     // const tasksDataStore = await DataStore.query(Task);
-    // console.log(tasksDataStore);
+    // console.log("data here:", tasksDataStore);
     const tasks = await API.graphql({ query: listTasks });
     console.log(tasks);
     // return tasks;
   } catch (err) {
-    // console.log("error fetching tasks:", err);
+    console.log("error fetching tasks:", err);
   }
 };
 
