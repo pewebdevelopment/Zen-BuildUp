@@ -75,8 +75,7 @@
                     <i class="fa fa-spinner text-base"></i>
                   </div>
                   <h3 class="text-base text-slate-700 dark:text-navy-100">
-                    In Progress
-                    {{ element.name + index }}
+                    {{ element.name }}
                   </h3>
                 </div>
 
@@ -250,6 +249,15 @@ onMounted(async () => {
   await getTasks();
 });
 
+const TaskStatusesENUM = reactive({
+  PLANNED: "PLANNED",
+  ASSIGNED: "ASSIGNED",
+  INPROGRESS: "INPROGRESS",
+  COMPLETED: "COMPLETED",
+  OVERDUE: "OVERDUE",
+  ARCHIVED: "ARCHIVED",
+});
+
 const getTasks = async () => {
   try {
     // https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js/#persistence-operations
@@ -263,58 +271,86 @@ const getTasks = async () => {
     // const tasks = await API.graphql({ query: listTasks });
     // console.log(tasks);
     // return tasks;
+    // const TaskStatusArray = await DataStore.query(TaskStatus);
+    // console.log("Tasks here:", TaskStatusArray);
   } catch (err) {
     console.log("error fetching tasks:", err);
   }
 };
 
-const list1 = reactive([
-  { id: 133, name: "One" },
-  { id: 2434, name: "Two" },
-  { id: 33, name: "Three" },
-  { id: 44, name: "Four" },
-  { id: 53334, name: "Five" },
-]);
+const TheTasks = reactive(
+  Object.keys(TaskStatusesENUM)
+    .map((key, index) => ({
+      [key]: [],
+    }))
+    .reduce((acc, obj) => ({ ...acc, ...obj }), {})
 
-const list2 = reactive([
-  { id: 13434, name: "One" },
-  { id: 2434, name: "Two" },
-  { id: 4343, name: "Three" },
-  { id: 4344, name: "Four" },
-  { id: 34345, name: "Five" },
-]);
+  // {
+  // PLANNED: [],
+  // ASSIGNED: [],
+  // INPROGRESS: [],
+  // COMPLETED: [],
+  // OVERDUE: [],
+  // ARCHIVED: [],
+  // YOLO: [],
+  // }
+);
 
-const list3 = reactive([
-  { id: 122, name: "One" },
-  { id: 23434, name: "Two" },
-  { id: 34343, name: "Three" },
-  { id: 43434, name: "Four" },
-  { id: 53443, name: "Five" },
-]);
+// TheTasks.PLANNED = reactive([
+//   { id: 133, name: "One" },
+//   { id: 2434, name: "Two" },
+//   { id: 33, name: "Three" },
+//   { id: 44, name: "Four" },
+//   { id: 53334, name: "Five" },
+// ]);
 
-const list4 = reactive([
-  { id: 1223, name: "One" },
-  { id: 234334, name: "Two" },
-  { id: 34366643, name: "Three" },
-  { id: 434434, name: "Four" },
-  { id: 4453443, name: "Five" },
-]);
+// TheTasks.ASSIGNED = reactive([
+//   { id: 13434, name: "One" },
+//   { id: 2434, name: "Two" },
+//   { id: 4343, name: "Three" },
+//   { id: 4344, name: "Four" },
+//   { id: 34345, name: "Five" },
+// ]);
 
-const list5 = reactive([
-  { id: 1223, name: "One" },
-  { id: 234654654334, name: "Two" },
-  { id: 343333366643, name: "Three" },
-  { id: 43422434, name: "Four" },
-  { id: 3443, name: "Five" },
-]);
+// TheTasks.INPROGRESS = reactive([
+//   { id: 122, name: "One" },
+//   { id: 23434, name: "Two" },
+//   { id: 34343, name: "Three" },
+//   { id: 43434, name: "Four" },
+//   { id: 53443, name: "Five" },
+// ]);
 
-const taskCategories = reactive([
-  { categoryID: 0, name: "CatOne", tasksList: list1 },
-  { categoryID: 1, name: "CatTwo", tasksList: list2 },
-  { categoryID: 2, name: "CatThree", tasksList: list3 },
-  { categoryID: 4, name: "CatFour", tasksList: list4 },
-  { categoryID: 5, name: "CatFive", tasksList: list5 },
-]);
+// TheTasks.COMPLETED = reactive([
+//   { id: 1223, name: "One" },
+//   { id: 234334, name: "Two" },
+//   { id: 34366643, name: "Three" },
+//   { id: 434434, name: "Four" },
+//   { id: 4453443, name: "Five" },
+// ]);
+
+// TheTasks.OVERDUE = reactive([
+//   { id: 1223, name: "One" },
+//   { id: 234654654334, name: "Two" },
+//   { id: 343333366643, name: "Three" },
+//   { id: 43422434, name: "Four" },
+//   { id: 3443, name: "Five" },
+// ]);
+
+// TheTasks.ARCHIVED = reactive([
+//   { id: 12423, name: "One" },
+//   { id: 27674654654334, name: "Two" },
+//   { id: 34333553366643, name: "Three" },
+//   { id: 4345522434, name: "Four" },
+//   { id: 3455543, name: "Five" },
+// ]);
+
+const taskCategories = reactive(
+  Object.keys(TheTasks).map((key, index) => ({
+    categoryID: index,
+    name: key,
+    tasksList: TheTasks[key],
+  }))
+);
 
 const log = () => {};
 </script>
