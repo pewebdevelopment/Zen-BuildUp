@@ -253,13 +253,15 @@ onMounted(async () => {
 const getTasks = async () => {
   try {
     // https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js/#persistence-operations
+
+    // DataStore.stop();
     // DataStore.clear();
-    // const studentsDataStore = await DataStore.query(Student);
-    // console.log("students here:", studentsDataStore);
-    // const tasksDataStore = await DataStore.query(Task);
-    // console.log("data here:", tasksDataStore);
-    const tasks = await API.graphql({ query: listTasks });
-    console.log(tasks);
+    const studentsDataStore = await DataStore.query(Student);
+    console.log("students here:", studentsDataStore);
+    const tasksDataStore = await DataStore.query(Task);
+    console.log("Tasks here:", tasksDataStore);
+    // const tasks = await API.graphql({ query: listTasks });
+    // console.log(tasks);
     // return tasks;
   } catch (err) {
     console.log("error fetching tasks:", err);
