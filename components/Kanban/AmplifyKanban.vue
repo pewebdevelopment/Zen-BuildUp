@@ -308,7 +308,7 @@ const TaskStatusesENUM = reactive({
 const TheTasks = reactive(
   Object.keys(TaskStatusesENUM)
     .map((key, index) => ({
-      [key]: [],
+      [key]: reactive([]),
     }))
     .reduce((acc, obj) => ({ ...acc, ...obj }), {})
 
