@@ -246,16 +246,34 @@ import PopperOptions from "@/components/Kanban/PopperOptions.vue";
 
 onMounted(async () => {
   console.log("Mounted Kanban");
-  await getTasks();
-});
+  const tasksFromDB = await getTasks();
+  // console.log("tasksFromDB", JSON.stringify(tasksFromDB, null, 2));
+  const plannedTasks = tasksFromDB.filter((task) => {
+    return task.status.includes("PLANNED");
+  });
 
-const TaskStatusesENUM = reactive({
-  PLANNED: "PLANNED",
-  ASSIGNED: "ASSIGNED",
-  INPROGRESS: "INPROGRESS",
-  COMPLETED: "COMPLETED",
-  OVERDUE: "OVERDUE",
-  ARCHIVED: "ARCHIVED",
+  Object.assign(TheTasks, { ...TheTasks, PLANNED: plannedTasks });
+
+  console.log("TheTasks.PLANNED", JSON.stringify(TheTasks.PLANNED, null, 1));
+
+  // TheTasks.ASSIGNED = tasksFromDB.filter((task) => {
+  //   return task.status.includes("ASSIGNED");
+  // });
+
+  // TheTasks.INPROGRESS = tasksFromDB.filter((task) => {
+  //   return task.status.includes("INPROGRESS");
+  // });
+
+  // TheTasks.COMPLETED = tasksFromDB.filter((task) => {
+  //   return task.status.includes("COMPLETED");
+  // });
+
+  // TheTasks.OVERDUE = tasksFromDB.filter((task) => {
+  //   return task.status.includes("OVERDUE");
+  // });
+
+  // TheTasks.ARCHIVED = tasksFromDB.filter((task) => {
+  //   return task.status.includes("ARCHIVED");
 });
 
 const getTasks = async () => {
@@ -264,19 +282,28 @@ const getTasks = async () => {
 
     // DataStore.stop();
     // DataStore.clear();
-    const studentsDataStore = await DataStore.query(Student);
-    console.log("students here:", studentsDataStore);
+    // const studentsDataStore = await DataStore.query(Student);
+    // console.log("students here:", studentsDataStore);
     const tasksDataStore = await DataStore.query(Task);
-    console.log("Tasks here:", tasksDataStore);
+    // console.log("Tasks here:", tasksDataStore);
     // const tasks = await API.graphql({ query: listTasks });
     // console.log(tasks);
-    // return tasks;
+    return tasksDataStore;
     // const TaskStatusArray = await DataStore.query(TaskStatus);
     // console.log("Tasks here:", TaskStatusArray);
   } catch (err) {
     console.log("error fetching tasks:", err);
   }
 };
+
+const TaskStatusesENUM = reactive({
+  PLANNED: "PLANNED", // Null status is treated as Planned
+  ASSIGNED: "ASSIGNED",
+  INPROGRESS: "INPROGRESS",
+  COMPLETED: "COMPLETED",
+  OVERDUE: "OVERDUE",
+  ARCHIVED: "ARCHIVED",
+});
 
 const TheTasks = reactive(
   Object.keys(TaskStatusesENUM)
@@ -285,6 +312,8 @@ const TheTasks = reactive(
     }))
     .reduce((acc, obj) => ({ ...acc, ...obj }), {})
 
+  // Finally the TheTasks object will look like this:
+
   // {
   // PLANNED: [],
   // ASSIGNED: [],
@@ -292,7 +321,7 @@ const TheTasks = reactive(
   // COMPLETED: [],
   // OVERDUE: [],
   // ARCHIVED: [],
-  // YOLO: [],
+
   // }
 );
 
@@ -351,8 +380,6 @@ const taskCategories = reactive(
     tasksList: TheTasks[key],
   }))
 );
-
-const log = () => {};
 </script>
 
 <style></style>
