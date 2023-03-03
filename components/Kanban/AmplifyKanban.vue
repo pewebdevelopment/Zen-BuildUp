@@ -49,6 +49,7 @@
       </div>
     </div>
     <div
+      :key="taskCategories.length"
       class="h-full flex flex-row max-w-[100vw] overflow-x-auto scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar w-full items-start overflow-y-hidden transition-all duration-[.25s]"
     >
       <draggable
@@ -265,37 +266,17 @@ onMounted(async () => {
   let mappedTaskCategories = Object.keys(TheTasks1).map((key, index) => ({
     categoryID: index,
     name: key,
-    tasksList: { ...TheTasks1[key] },
+    tasksList: [...TheTasks1[key]],
   }));
 
   taskCategories = mappedTaskCategories;
+
+  console.log("taskCategories=>", JSON.stringify(taskCategories, null, 1));
 
   // console.log("taskCategories=>", JSON.stringify(taskCategories, null, 1));
   // console.log("TheTasks1=>", JSON.stringify(TheTasks1, null, 1));
 
   Object.assign(TheTasks, { ...TheTasks, PLANNED: plannedTasks });
-
-  // console.log("TheTasks=>", JSON.stringify(TheTasks, null, 1));
-  // console.log("TheTasks.PLANNED", JSON.stringify(TheTasks.PLANNED, null, 1));
-
-  // TheTasks.ASSIGNED = tasksFromDB.filter((task) => {
-  //   return task.status.includes("ASSIGNED");
-  // });
-
-  // TheTasks.INPROGRESS = tasksFromDB.filter((task) => {
-  //   return task.status.includes("INPROGRESS");
-  // });
-
-  // TheTasks.COMPLETED = tasksFromDB.filter((task) => {
-  //   return task.status.includes("COMPLETED");
-  // });
-
-  // TheTasks.OVERDUE = tasksFromDB.filter((task) => {
-  //   return task.status.includes("OVERDUE");
-  // });
-
-  // TheTasks.ARCHIVED = tasksFromDB.filter((task) => {
-  //   return task.status.includes("ARCHIVED");
 });
 
 const getTasks = async () => {
