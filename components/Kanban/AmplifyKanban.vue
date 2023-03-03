@@ -258,14 +258,25 @@ onMounted(async () => {
 
   Object.keys(TaskStatusesENUM).forEach((key) => {
     TheTasks1[key] = tasksFromDB.filter((task) => {
-      return task.status.includes(key);
+      return task.status.includes(`${key}`);
     });
   });
 
+  let mappedTaskCategories = Object.keys(TheTasks1).map((key, index) => ({
+    categoryID: index,
+    name: key,
+    tasksList: { ...TheTasks1[key] },
+  }));
+
+  taskCategories = mappedTaskCategories;
+
+  // console.log("taskCategories=>", JSON.stringify(taskCategories, null, 1));
+  // console.log("TheTasks1=>", JSON.stringify(TheTasks1, null, 1));
+
   Object.assign(TheTasks, { ...TheTasks, PLANNED: plannedTasks });
 
-  console.log("TheTasks=>", JSON.stringify(TheTasks, null, 1));
-  console.log("TheTasks.PLANNED", JSON.stringify(TheTasks.PLANNED, null, 1));
+  // console.log("TheTasks=>", JSON.stringify(TheTasks, null, 1));
+  // console.log("TheTasks.PLANNED", JSON.stringify(TheTasks.PLANNED, null, 1));
 
   // TheTasks.ASSIGNED = tasksFromDB.filter((task) => {
   //   return task.status.includes("ASSIGNED");
@@ -348,21 +359,21 @@ const TheTasks = reactive(
   // }
 );
 
-// TheTasks.PLANNED = reactive([
-//   { id: 133, name: "One" },
-//   { id: 2434, name: "Two" },
-//   { id: 33, name: "Three" },
-//   { id: 44, name: "Four" },
-//   { id: 53334, name: "Five" },
-// ]);
+TheTasks.PLANNED = reactive([
+  { id: 133, name: "One" },
+  { id: 2434, name: "Two" },
+  { id: 33, name: "Three" },
+  { id: 44, name: "Four" },
+  { id: 53334, name: "Five" },
+]);
 
-// TheTasks.ASSIGNED = reactive([
-//   { id: 13434, name: "One" },
-//   { id: 2434, name: "Two" },
-//   { id: 4343, name: "Three" },
-//   { id: 4344, name: "Four" },
-//   { id: 34345, name: "Five" },
-// ]);
+TheTasks.ASSIGNED = reactive([
+  { id: 13434, name: "One" },
+  { id: 2434, name: "Two" },
+  { id: 4343, name: "Three" },
+  { id: 4344, name: "Four" },
+  { id: 34345, name: "Five" },
+]);
 
 // TheTasks.INPROGRESS = reactive([
 //   { id: 122, name: "One" },
@@ -396,15 +407,21 @@ const TheTasks = reactive(
 //   { id: 3455543, name: "Five" },
 // ]);
 
-const taskCategories = computed(() => {
-  return Object.keys(TheTasks1).map((key, index) => ({
-    categoryID: index,
-    name: key,
-    tasksList: TheTasks1[key],
-  }));
-});
+// const taskCategories = computed(() => {
+//   const Categories = Object.keys(TheTasks1);
+//   console.log("Categories:", Categories);
+//   const newCategories = Categories.map((key, index) => ({
+//     categoryID: index,
+//     name: key,
+//     tasksList: [...TheTasks1[`${key}`]],
+//   }));
+//   console.log("newCategories=>", newCategories);
+//   return newCategories;
+// });
 
-// const taskCategories = computed(
+let taskCategories = reactive([]);
+
+// const taskCategories = reactive(
 //   Object.keys(TheTasks1).map((key, index) => ({
 //     categoryID: index,
 //     name: key,
