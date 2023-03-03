@@ -49,9 +49,15 @@
       </div>
     </div>
     <div
-      class="h-full flex flex-row max-w-[100vw] overflow-x-auto scrollbar-kanban dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar w-full items-start overflow-y-hidden transition-all duration-[.25s]">
-      <draggable id="tasks-group" :list="taskCategories" group="Categories" :itemKey="`${taskCategories.categoryID}`"
-        class="flex flex-row w-full items-start relative p-0.5 transition-all">
+      class="h-full flex flex-row max-w-[100vw] overflow-x-auto scrollbar-kanban dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded kanban-scrollbar w-full items-start overflow-y-hidden transition-all duration-[.25s]"
+    >
+      <draggable
+        id="tasks-group"
+        :list="taskCategories"
+        group="Categories"
+        :itemKey="`${taskCategories.categoryID}`"
+        class="flex flex-row w-full items-start relative p-0.5 transition-all"
+      >
         <template #item="{ element, index }">
           <div
             class="draggable flex relative max-w-full shrink-0 pr-3 overflow-x-auto"
@@ -83,9 +89,15 @@
               >
                 <draggable
                   class="categoris-group overflow-x-scroll scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-800 scrollbar-thumb-gray-700 scrollbar-track-gray-400 scrollbar-thumb-rounded"
-                  :list="element?.tasksList" group="Tasks" @change="() => { }" :itemKey="`${element?.tasksList[index]?.id}`">
+                  :list="element?.tasksList"
+                  group="Tasks"
+                  @change="() => {}"
+                  :itemKey="`${element?.tasksList[index]?.id}`"
+                >
                   <template #item="{ element, index }">
-                    <div class="card cursor-pointer shadow-sm mb-4 min-w-[10rem] max-w-[20rem]">
+                    <div
+                      class="card cursor-pointer shadow-sm mb-4 min-w-[10rem] max-w-[20rem]"
+                    >
                       <div class="flex px-2 pb-2 pt-2 m-4">
                         <div class="w-10 shrink-0 py-1">
                           <img
@@ -255,11 +267,11 @@ onMounted(async () => {
     categoryID: index,
     name: key,
     tasksList: [...TheTasks1[key]],
-  }))
+  }));
 
-  _taskCategories.forEach(cat => {
-      taskCategories.push(cat);
-   })
+  _taskCategories.forEach((cat) => {
+    taskCategories.push(cat);
+  });
   // console.log("taskCategories=>", JSON.stringify(taskCategories, null, 1));
   // console.log("TheTasks1=>", JSON.stringify(TheTasks1, null, 1));
 
@@ -270,8 +282,8 @@ const getTasks = async () => {
   try {
     // https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js/#persistence-operations
 
-    // DataStore.stop();
-    // DataStore.clear();
+    // await DataStore.stop();
+    // await DataStore.clear();
     // const studentsDataStore = await DataStore.query(Student);
     // console.log("students here:", studentsDataStore);
     const tasksDataStore = await DataStore.query(Task);
@@ -387,8 +399,7 @@ TheTasks.ASSIGNED = reactive([
 //   return newCategories;
 // });
 
-const taskCategories = reactive([])
-
+const taskCategories = reactive([]);
 </script>
 
 <style></style>
