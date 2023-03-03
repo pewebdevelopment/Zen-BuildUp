@@ -252,8 +252,19 @@ onMounted(async () => {
     return task.status.includes("PLANNED");
   });
 
+  Object.keys(TaskStatusesENUM).forEach((key) => {
+    TheTasks1[key] = [];
+  });
+
+  Object.keys(TaskStatusesENUM).forEach((key) => {
+    TheTasks1[key] = tasksFromDB.filter((task) => {
+      return task.status.includes(key);
+    });
+  });
+
   Object.assign(TheTasks, { ...TheTasks, PLANNED: plannedTasks });
 
+  console.log("TheTasks=>", JSON.stringify(TheTasks, null, 1));
   console.log("TheTasks.PLANNED", JSON.stringify(TheTasks.PLANNED, null, 1));
 
   // TheTasks.ASSIGNED = tasksFromDB.filter((task) => {
@@ -305,15 +316,27 @@ const TaskStatusesENUM = reactive({
   ARCHIVED: "ARCHIVED",
 });
 
+const TheTasks1 = reactive({});
+
 const TheTasks = reactive(
   Object.keys(TaskStatusesENUM)
     .map((key, index) => ({
       [key]: reactive([]),
     }))
     .reduce((acc, obj) => ({ ...acc, ...obj }), {})
-
   // Finally the TheTasks object will look like this:
 
+  // Object.keys gives us an array of the keys of the TaskStatusesENUM object. We then map over that array and return an object with the key as the key of the TaskStatusesENUM object and the value as an empty array. We then reduce that array of objects into a single object. This is the same as doing this:
+  // ("PLANNED", "ASSIGNED", "INPROGRESS", "COMPLETED", "OVERDUE", "ARCHIVED")
+  // .map does this
+  // [{PLANNED: []},
+  // {ASSIGNED: []},
+  // {INPROGRESS: []},
+  // {COMPLETED: []},
+  // {OVERDUE: []},
+  // {ARCHIVED: []}]
+
+  // .reduce does this:
   // {
   // PLANNED: [],
   // ASSIGNED: [],
@@ -373,13 +396,21 @@ const TheTasks = reactive(
 //   { id: 3455543, name: "Five" },
 // ]);
 
-const taskCategories = reactive(
-  Object.keys(TheTasks).map((key, index) => ({
+const taskCategories = computed(() => {
+  return Object.keys(TheTasks1).map((key, index) => ({
     categoryID: index,
     name: key,
-    tasksList: TheTasks[key],
-  }))
-);
+    tasksList: TheTasks1[key],
+  }));
+});
+
+// const taskCategories = computed(
+//   Object.keys(TheTasks1).map((key, index) => ({
+//     categoryID: index,
+//     name: key,
+//     tasksList: TheTasks1[key],
+//   }))
+// );
 </script>
 
 <style></style>
