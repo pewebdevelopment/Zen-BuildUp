@@ -6,11 +6,3 @@
 @import "_progress.css";
 @import "_scrollbars.css";
 @import "_table.css";
-
-@import "./app.css";
-@import "./components.css";
-@import "./pages.css";
-/* @import "~highlight.js/styles/atom-one-dark.css";  */
-/* Just for demo purpose only for highlighting code */
-
-@import "./fontawesome-all.css";
