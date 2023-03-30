@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout name="zen">
-    <SectionMain><Kanban /></SectionMain>
+    <Kanban />
   </NuxtLayout>
 </template>
 
